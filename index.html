@@ -5,6 +5,55 @@
   </head>
   <body>
     <main>
+
+      <script id="page-template" type="text/x-lodash-template">
+        <div id="sidebar"><p style="float: left; background: red; padding: 20px; margin: 10px;">what do you think? <br />Leave a comment <br />Thank you!</p></div>
+
+        <div id="post"><%= post %></div>
+      </script>
+
+      <script id="post-template" type="text/x-lodash-template">
+        <article>
+          <header><h1><%- title %></h1></header>
+          <p>
+            <%- body %>
+          </p>
+          <footer><small>Posted by <%- author %></small></footer>
+        </article>
+
+        <div id="comments">
+        </div>
+
+        <form onSubmit="postComment(); return false;">
+        <p>Post Response</p>
+          Comment: <input type="text" id="comment" /><br/>
+          Author: <input type="text" id="commenter" /><br/>
+          <input type="submit" />
+        </form>
+      </script>
+
+      <form onSubmit="createPost(); return false;" id="post-form">
+        Title: <input type="text" id="title" /><br/>
+        Body: <input type="textfield" id="body" /><br/>
+        Author: <input type="text" id="author" /><br/>
+        <input type="submit" />
+      </form>
+
+      <div id='content'>
+      </div>
+
+      <script id="comments-template" type="text/x-lodash-template">
+      <p>
+        Leave a comment!
+      </p>
+      <%= comments %>
+      </script>
+
+      <script id="comment-template" type="text/x-lodash-template">
+      <%- comment %>
+        <footer><small><%- commenter %></small></footer>
+      </script>
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
